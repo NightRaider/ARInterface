@@ -14,6 +14,7 @@ public class CursorMove : MonoBehaviour
     public int startZ = 1999;
 
     private bool cursorMoveActive;
+    private Vector3 _lastposition=Vector3.zero;
 
     public bool CursorMoveActive
     {
@@ -41,6 +42,10 @@ public class CursorMove : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, screenScale * projXY + targetZ, smoothing * Time.deltaTime);
             }
+        }
+        else
+        {
+            _lastposition = transform.position;
         }
     }
 
