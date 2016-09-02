@@ -37,35 +37,19 @@ public class JointOrientation : MonoBehaviour
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
 
         // Update references when the pose becomes fingers spread or the q key is pressed.
-        bool updateReference = false;
-        if (thalmicMyo.pose != _lastPose) {
+        if (thalmicMyo.pose != _lastPose)
+        {
             _lastPose = thalmicMyo.pose;
 
-            if (thalmicMyo.pose == Pose.FingersSpread) {
-                updateReference = true;
-
-                ExtendUnlockAndNotifyUserAction(thalmicMyo);
-            }
-        }
-        if (Input.GetKeyDown ("r")) {
-            updateReference = true;
-        }
-
-        // Update references. This anchors the joint on-screen such that it faces forward away
-        // from the viewer when the Myo armband is oriented the way it is when these references are taken.
-        if (updateReference) {
             // _antiYaw represents a rotation of the Myo armband about the Y axis (up) which aligns the forward
             // vector of the rotation with Z = 1 when the wearer's arm is pointing in the reference direction.
             _antiPitch = Quaternion.FromToRotation(
                 myo.transform.forward,
                 new Vector3(myo.transform.forward.x, 0.0f, myo.transform.forward.z)
                 );
-            _antiYaw = Quaternion.FromToRotation (
-                new Vector3 (myo.transform.forward.x, 0.0f, myo.transform.forward.z),
-                new Vector3 (0, 0, 1)
-            
-            
-            );
+            _antiYaw = Quaternion.FromToRotation(
+                new Vector3(myo.transform.forward.x, 0.0f, myo.transform.forward.z),
+                new Vector3(0, 0, 1));       
 
             // _referenceRoll represents how many degrees the Myo armband is rotated clockwise
             // about its forward axis (when looking down the wearer's arm towards their hand) from the reference zero

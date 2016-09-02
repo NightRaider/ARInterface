@@ -30,15 +30,16 @@ public class CursorStateHandler : MonoBehaviour
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo>();
         if (thalmicMyo.pose != _lastPose)
         {
-            _lastPose = thalmicMyo.pose;
+            
             if (thalmicMyo.pose == Pose.Fist)
             {
                 materialHandler.SetMaterial((int)MyoPoses.MakeFist);
+                cursorMove.CursorMoveActive = false;
             }
             else if (thalmicMyo.pose == Pose.FingersSpread)
             {
                 materialHandler.SetMaterial((int)MyoPoses.FingerSpread);
-
+                cursorMove.CursorMoveActive = false;
                 //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
             else if (thalmicMyo.pose == Pose.WaveIn)
@@ -50,14 +51,56 @@ public class CursorStateHandler : MonoBehaviour
             else if (thalmicMyo.pose == Pose.WaveOut)
             {
                 materialHandler.SetMaterial((int)MyoPoses.WaveOut);
+                Debug.Log("waveout");
                 cursorMove.CursorMoveActive = false;
                 //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
             else if (thalmicMyo.pose == Pose.DoubleTap)
             {
-            //    GetComponent<Renderer>().material = doubleTapMaterial;
+                //    GetComponent<Renderer>().material = doubleTapMaterial;
 
-            //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+                //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else
+            {
+                materialHandler.SetMaterial((int)MyoPoses.Idle);
+                cursorMove.CursorMoveActive = false;
+            }
+            _lastPose = thalmicMyo.pose;
+
+        }
+
+        else if (thalmicMyo.pose == _lastPose)
+        {
+            if (thalmicMyo.pose == Pose.Fist)
+            {
+                
+                cursorMove.CursorMoveActive = true;
+            }
+            else if (thalmicMyo.pose == Pose.FingersSpread)
+            {
+                
+                cursorMove.CursorMoveActive = true;
+            //    //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.WaveIn)
+            {
+                materialHandler.SetMaterial((int)MyoPoses.WaveIn);
+                cursorMove.CursorMoveActive = false;
+                //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.WaveOut)
+            {
+                materialHandler.SetMaterial((int)MyoPoses.WaveOut);
+                Debug.Log("waveout");
+                cursorMove.CursorMoveActive = false;
+                //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.DoubleTap)
+            {
+                //    GetComponent<Renderer>().material = doubleTapMaterial;
+
+                //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
             else
             {

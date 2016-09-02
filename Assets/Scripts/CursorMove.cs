@@ -29,7 +29,7 @@ public class CursorMove : MonoBehaviour
 
     void Start()
     {
-        CursorMoveActive = true;
+        CursorMoveActive = false;
     }
 
     void Update()
@@ -40,12 +40,13 @@ public class CursorMove : MonoBehaviour
             Vector3 targetZ = new Vector3(0, 0, startZ);
             if (Vector3.Distance(transform.position, screenScale * projXY + targetZ) > 0.05f)
             {
-                transform.position = Vector3.Lerp(transform.position, screenScale * projXY + targetZ, smoothing * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, _lastposition+screenScale * projXY + targetZ, smoothing * Time.deltaTime);
             }
         }
         else
         {
-            _lastposition = transform.position;
+            _lastposition = new Vector3(transform.position.x,transform.position.y,0);
+            Debug.Log(_lastposition);
         }
     }
 
