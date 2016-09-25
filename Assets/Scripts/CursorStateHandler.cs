@@ -21,6 +21,7 @@ public class CursorStateHandler : MonoBehaviour
     public GameObject myo = null;
     public CursorMaterialHandler materialHandler;
     public CursorMove cursorMove;
+    public CursorSelect cursorSelect;
 
     private Pose _lastPose = Pose.Unknown;
 
@@ -35,6 +36,7 @@ public class CursorStateHandler : MonoBehaviour
             {
                 materialHandler.SetMaterial((int)MyoPoses.MakeFist);
                 cursorMove.CursorMoveActive = false;
+                cursorSelect.SelectObject();
             }
             else if (thalmicMyo.pose == Pose.FingersSpread)
             {
@@ -65,6 +67,8 @@ public class CursorStateHandler : MonoBehaviour
             {
                 materialHandler.SetMaterial((int)MyoPoses.Idle);
                 cursorMove.CursorMoveActive = false;
+                cursorSelect.DeSelectObject();
+                
             }
             _lastPose = thalmicMyo.pose;
 

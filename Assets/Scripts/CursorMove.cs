@@ -13,18 +13,18 @@ public class CursorMove : MonoBehaviour
     public float smoothing = 1.0f;
     public int startZ = 1999;
 
-    private bool cursorMoveActive;
+    private bool _cursorMoveActive;
     private Vector3 _lastposition=Vector3.zero;
 
     public bool CursorMoveActive
     {
-        get { return cursorMoveActive; }
-        set { cursorMoveActive = value; }
+        get { return _cursorMoveActive; }
+        set { _cursorMoveActive = value; }
     }
 
     public void ToggleActive()
     {
-        cursorMoveActive = !cursorMoveActive;
+        _cursorMoveActive = !_cursorMoveActive;
     }
 
     void Start()
@@ -34,7 +34,7 @@ public class CursorMove : MonoBehaviour
 
     void Update()
     {
-        if (cursorMoveActive)
+        if (_cursorMoveActive)
         {
             Vector3 projXY = new Vector3(stick.position.x, stick.position.y, 0);
             Vector3 targetZ = new Vector3(0, 0, startZ);
