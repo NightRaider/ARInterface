@@ -7,6 +7,8 @@ public class CursorSelect : MonoBehaviour
     public Transform objectHit;
 
     private bool _selectFlag = false;
+    private RaycastHit _hit;
+    private Vector3 _hitRelativePosition;
     // Use this for initialization
     void Start()
     {
@@ -19,17 +21,19 @@ public class CursorSelect : MonoBehaviour
     {
         if (_selectFlag)
         {
-            float scale = objectHit.position.z / transform.position.z;
-            objectHit.position = new Vector3(transform.position.x*scale, transform.position.y*scale, objectHit.position.z);
+            
+            float scale = _hit.point.z / transform.position.z;
+            objectHit.position = new Vector3(transform.position.x*scale-_hitRelativePosition.x, transform.position.y*scale-_hitRelativePosition.y, objectHit.position.z);
         }
     }
 
     public bool SelectObject()
     {
-        RaycastHit hit;
-        if (Physics.Linecast(userCamera.transform.position, transform.position,out hit))
+        
+        if (Physics.Linecast(userCamera.transform.position, transform.position,out _hit))
         {
-            objectHit = hit.transform;
+            objectHit = _hit.transform;
+            _hitRelativePosition = _hit.point - objectHit.position;
             _selectFlag = true;
         }
         else
