@@ -14,7 +14,7 @@ public class CursorMove : MonoBehaviour
     public int startZ = 1999;
 
     private bool _cursorMoveActive;
-    private Vector3 _lastposition=Vector3.zero;
+    private Vector3 _lastposition = Vector3.zero;
 
     public bool CursorMoveActive
     {
@@ -40,13 +40,12 @@ public class CursorMove : MonoBehaviour
             Vector3 targetZ = new Vector3(0, 0, startZ);
             if (Vector3.Distance(transform.position, screenScale * projXY + targetZ) > 0.05f)
             {
-                transform.position = Vector3.Lerp(transform.position, _lastposition+screenScale * projXY + targetZ, smoothing * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, _lastposition + screenScale * projXY + targetZ, smoothing * Time.deltaTime);
             }
         }
         else
         {
-            _lastposition = new Vector3(transform.position.x,transform.position.y,0);
-            Debug.Log(_lastposition);
+            _lastposition = new Vector3(transform.position.x, transform.position.y, 0);
         }
     }
 
