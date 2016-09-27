@@ -8,6 +8,8 @@ public class CursorSelect : MonoBehaviour
     public Transform joint;
     public float zScale = 0.05f;
     public float smoothing = 10;
+    public float rotateScale = 0.5f;
+
 
     private static bool _moveObjectFlag = false;
     private RaycastHit _hit;
@@ -47,7 +49,17 @@ public class CursorSelect : MonoBehaviour
 
     public void SelectObject()
     {
+        float xRotate = joint.transform.eulerAngles.z;
+        if (xRotate > 180)
+            xRotate -= 360;
+        float yRotate = joint.transform.eulerAngles.z;
+        if (yRotate > 180)
+            yRotate -= 360;
 
+        float zRotate = joint.transform.eulerAngles.z;
+        if (zRotate > 180)
+            zRotate -= 360;
+        objectHit.Rotate(rotateScale * xRotate, rotateScale * yRotate, rotateScale * zRotate);
     }
 
     public void DeSelectObject()
@@ -64,11 +76,15 @@ public class CursorSelect : MonoBehaviour
     {
         if(_moveObjectFlag == true)
         {
+            float zMove = joint.transform.eulerAngles.z;
+            if (zMove > 180)
+                zMove -= 360;
             float scale = _hit.point.z / transform.position.z;
             Vector3 targetposition = new Vector3(transform.position.x * scale 
                 - _hitRelativePosition.x, transform.position.y * scale 
                 - _hitRelativePosition.y, objectHit.position.z
-                - zScale*joint.transform.rotation.z);
+                - zScale*zMove);
+            Debug.Log(zMove);
             objectHit.position = Vector3.Lerp(objectHit.position, targetposition, smoothing*Time.deltaTime);
         }
     }

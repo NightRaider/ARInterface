@@ -60,7 +60,6 @@ public class CursorStateHandler : MonoBehaviour
                 _timer = 0;
                 if (OnMakeFistDown != null)
                 {
-                    Debug.Log("down");
                     OnMakeFistDown();
                 }
 
@@ -81,7 +80,6 @@ public class CursorStateHandler : MonoBehaviour
             else if (thalmicMyo.pose == Pose.WaveOut)
             {
                 materialHandler.SetMaterial((int)MyoPoses.WaveOut);
-                Debug.Log("waveout");
                 cursorMove.CursorMoveActive = false;
             }
             else if (thalmicMyo.pose == Pose.DoubleTap)
@@ -93,16 +91,7 @@ public class CursorStateHandler : MonoBehaviour
                 materialHandler.SetMaterial((int)MyoPoses.Idle);
                 if (_lastPose == Pose.Fist)
                 {
-                    if (isClick())
-                    {
-                        if (OnMakeFistClick != null)
-                            OnMakeFistClick();
-                    }
-                    else
-                    {
-                        if (OnMakeFistUp != null)
-                            OnMakeFistUp();
-                    }
+                   
                 }
                 if (_lastPose == Pose.FingersSpread)
                 {
@@ -152,7 +141,6 @@ public class CursorStateHandler : MonoBehaviour
             else if (thalmicMyo.pose == Pose.WaveOut)
             {
                 materialHandler.SetMaterial((int)MyoPoses.WaveOut);
-                Debug.Log("waveout");
                 cursorMove.CursorMoveActive = false;
                 //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
@@ -166,12 +154,22 @@ public class CursorStateHandler : MonoBehaviour
             {
                 materialHandler.SetMaterial((int)MyoPoses.Idle);
                 cursorMove.CursorMoveActive = true;
+                if (isClick())
+                {
+                    if (OnMakeFistClick != null)
+                        OnMakeFistClick();
+                    Debug.Log("sssssssssssssssssss");
+                }
+                else
+                {
+                    if (OnMakeFistUp != null)
+                        OnMakeFistUp();
+                }
             }
         }
     }
     private bool isClick()
     {
-        Debug.Log(_timer);
         return _timer < clickTimerLimit;
     }
 }
