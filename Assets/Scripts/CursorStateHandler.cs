@@ -125,14 +125,14 @@ public class CursorStateHandler : MonoBehaviour
                 _timer += Time.deltaTime;
                 cursorMove.CursorMoveActive = true;
                 // This would cause the object to jump
-                //if (!isClick()) 
-                //{
-                if (OnMakeFistDrag != null)
+                if (!isClick())
                 {
-                    OnMakeFistDrag();
-                    Debug.Log(OnMakeFistDrag);
+                    if (OnMakeFistDrag != null)
+                    {
+                        OnMakeFistDrag();
+                        Debug.Log(OnMakeFistDrag);
+                    }
                 }
-                // }
 
 
             }

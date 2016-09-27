@@ -6,6 +6,8 @@ public class CursorSelect : MonoBehaviour
     public Camera userCamera;
     public Transform objectHit;
     public Transform joint;
+    public float zScale = 0.05f;
+    public float smoothing = 10;
 
     private static bool _moveObjectFlag = false;
     private RaycastHit _hit;
@@ -63,9 +65,11 @@ public class CursorSelect : MonoBehaviour
         if(_moveObjectFlag == true)
         {
             float scale = _hit.point.z / transform.position.z;
-            objectHit.position = new Vector3(transform.position.x * scale 
+            Vector3 targetposition = new Vector3(transform.position.x * scale 
                 - _hitRelativePosition.x, transform.position.y * scale 
-                - _hitRelativePosition.y, objectHit.position.z);
+                - _hitRelativePosition.y, objectHit.position.z
+                - zScale*joint.transform.rotation.z);
+            objectHit.position = Vector3.Lerp(objectHit.position, targetposition, smoothing*Time.deltaTime);
         }
     }
 

@@ -40,7 +40,8 @@ public class CursorMove : MonoBehaviour
             Vector3 targetZ = new Vector3(0, 0, startZ);
             if (Vector3.Distance(transform.position, screenScale * projXY + targetZ) > 0.05f)
             {
-                transform.position = Vector3.Lerp(transform.position, _lastposition + screenScale * projXY + targetZ, smoothing * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, _lastposition 
+                    + screenScale * projXY + targetZ, smoothing * Time.deltaTime);
             }
         }
         else
