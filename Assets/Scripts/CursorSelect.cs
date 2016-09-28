@@ -7,8 +7,9 @@ public class CursorSelect : MonoBehaviour
     public Transform objectHit;
     public Transform joint;
     public float zScale = 0.05f;
+
     public float smoothing = 10;
-    public float rotateScale = 0.5f;
+    public float rotateScale = 0.05f;
 
 
     private static bool _moveObjectFlag = false;
@@ -33,6 +34,7 @@ public class CursorSelect : MonoBehaviour
         CursorStateHandler.OnMakeFistUp += DeMoveObject;
         CursorStateHandler.OnMakeFistClick += SelectObject;
         CursorStateHandler.OnMakeFistDrag += MoveObject;
+
         CursorStateHandler.OnFingerSpreadClick += DeSelectObject;
         CursorStateHandler.OnFingerSpreadDrag += OpenProperty;
     }
@@ -49,22 +51,29 @@ public class CursorSelect : MonoBehaviour
 
     public void SelectObject()
     {
-        float xRotate = joint.transform.eulerAngles.z;
-        if (xRotate > 180)
-            xRotate -= 360;
-        float yRotate = joint.transform.eulerAngles.z;
-        if (yRotate > 180)
-            yRotate -= 360;
+        if (objectHit != null)
+        {
+            float xRotate = degreeToFloat(joint.transform.eulerAngles.x);
 
-        float zRotate = joint.transform.eulerAngles.z;
-        if (zRotate > 180)
-            zRotate -= 360;
-        objectHit.Rotate(rotateScale * xRotate, rotateScale * yRotate, rotateScale * zRotate);
+            float yRotate = degreeToFloat(joint.transform.eulerAngles.y);
+
+            Debug.Log(joint.transform.eulerAngles.z);
+            float zRotate = degreeToFloat(joint.transform.eulerAngles.z);
+
+            Debug.Log("x" + xRotate);
+            Debug.Log("y" + yRotate);
+            Debug.Log("z" + zRotate);
+            objectHit.Rotate(rotateScale * (xRotate==0?0:xRotate-15), 
+                rotateScale * (yRotate==0?0:yRotate-15), 
+                rotateScale * (zRotate==0?0:zRotate-5),Space.World);
+
+        }
     }
 
     public void DeSelectObject()
     {
-
+        if (objectHit != null)
+            objectHit = null;
     }
 
     public void OpenProperty()
@@ -79,6 +88,8 @@ public class CursorSelect : MonoBehaviour
             float zMove = joint.transform.eulerAngles.z;
             if (zMove > 180)
                 zMove -= 360;
+            if (zMove < 10 && zMove > -10)
+                zMove = 0;
             float scale = _hit.point.z / transform.position.z;
             Vector3 targetposition = new Vector3(transform.position.x * scale 
                 - _hitRelativePosition.x, transform.position.y * scale 
@@ -93,5 +104,16 @@ public class CursorSelect : MonoBehaviour
     {
         _moveObjectFlag = false;
         objectHit = null;
+    }
+
+    // Change euler angle from 0 - 360 to -180 to 180
+    private float degreeToFloat(float angle)
+    {
+        if (angle > 180 && angle < 345)
+            return angle - 360;
+        else if (angle > 15 && angle < 180)
+            return angle;
+        else
+            return 0;
     }
 }

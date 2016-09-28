@@ -89,10 +89,6 @@ public class CursorStateHandler : MonoBehaviour
             else
             {
                 materialHandler.SetMaterial((int)MyoPoses.Idle);
-                if (_lastPose == Pose.Fist)
-                {
-                   
-                }
                 if (_lastPose == Pose.FingersSpread)
                 {
                     if (isClick())
@@ -158,13 +154,14 @@ public class CursorStateHandler : MonoBehaviour
                 {
                     if (OnMakeFistClick != null)
                         OnMakeFistClick();
-                    Debug.Log("sssssssssssssssssss");
+
                 }
                 else
                 {
                     if (OnMakeFistUp != null)
                         OnMakeFistUp();
                 }
+
             }
         }
     }
