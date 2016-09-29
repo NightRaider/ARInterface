@@ -66,7 +66,7 @@ public class CursorSelect : MonoBehaviour
             objectHit.Rotate(rotateScale * (xRotate==0?0:xRotate-15), 
                 rotateScale * (yRotate==0?0:yRotate-15), 
                 rotateScale * (zRotate==0?0:zRotate-5),Space.World);
-
+            StatusUIManager.AppStatus = objectHit.name+" Selected";
         }
     }
 
@@ -74,6 +74,7 @@ public class CursorSelect : MonoBehaviour
     {
         if (objectHit != null)
             objectHit = null;
+        StatusUIManager.AppStatus = "Cursor Moving";
     }
 
     public void OpenProperty()
@@ -97,6 +98,7 @@ public class CursorSelect : MonoBehaviour
                 - zScale*zMove);
             Debug.Log(zMove);
             objectHit.position = Vector3.Lerp(objectHit.position, targetposition, smoothing*Time.deltaTime);
+            StatusUIManager.AppStatus = objectHit.name + " Moving";
         }
     }
 
@@ -104,6 +106,7 @@ public class CursorSelect : MonoBehaviour
     {
         _moveObjectFlag = false;
         objectHit = null;
+        StatusUIManager.AppStatus ="Cursor Moving";
     }
 
     // Change euler angle from 0 - 360 to -180 to 180
