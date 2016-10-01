@@ -64,6 +64,9 @@
     <Reference Include="Vuforia.UnityExtensions">
       <HintPath>Assets\Vuforia\Scripts\Internal\Vuforia.UnityExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-UnityScript-firstpass">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Myo Samples\Scripts\ColorBoxByPose.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="Assets\Scripts\CursorMove.cs" />
     <Compile Include="Assets\Scripts\CursorSelect.cs" />
     <Compile Include="Assets\Scripts\CursorStateHandler.cs" />
+    <Compile Include="Assets\Scripts\StatusUIManager.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CylinderTargetBehaviour.cs" />
@@ -126,8 +130,11 @@
     <Compile Include="Assets\Vuforia\Scripts\WordBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
+    <None Include="Assets\Kitten\Shaders\Normal-Diffuse.shader" />
     <None Include="Assets\Myo\README-MyoUnity.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\StreamingAssets\QCAR\Markers.xml" />
     <None Include="Assets\Vuforia\Editor\Scripts\Vuforia.UnityExtensions.Editor.XML" />
     <None Include="Assets\Vuforia\Editor\WebcamProfiles\profiles.xml" />
     <None Include="Assets\Vuforia\Scripts\Internal\Vuforia.UnityExtensions.XML" />

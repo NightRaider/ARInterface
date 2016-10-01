@@ -64,7 +64,7 @@ public class CursorStateHandler : MonoBehaviour
                 }
 
                 cursorMove.CursorMoveActive = false;
-                cursorSelect.MoveObject();
+
             }
             else if (thalmicMyo.pose == Pose.FingersSpread)
             {
