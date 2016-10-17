@@ -61,6 +61,14 @@ public class CursorStateHandler : MonoBehaviour
             Rigidbody rb = obj.GetComponent<Rigidbody>();
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
+        GameObject[] designSpaceEnvironment = GameObject.FindGameObjectsWithTag("DesignSpaceEnvironment");
+        foreach (GameObject obj in designSpaceEnvironment)
+        {
+            Debug.Log(obj);
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        
     }
 
     // Update is called once per frame

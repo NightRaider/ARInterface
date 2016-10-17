@@ -89,6 +89,7 @@ public class CursorSelect : MonoBehaviour
 
             float zRotate = 0;
 
+            Debug.Log(yRotate);
             objectHit.Rotate(rotateScale * (xRotate == 0 ? 0 : xRotate - 15),
                 rotateScale * (yRotate == 0 ? 0 : yRotate - 15),
                 rotateScale * (zRotate == 0 ? 0 : zRotate - 5), Space.Self);
