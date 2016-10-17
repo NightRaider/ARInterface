@@ -7,6 +7,7 @@ public class CursorSelect : MonoBehaviour
     public Transform objectHit;
     public Transform joint;
     public float zScale = 0.05f;
+    public float speed = 10;
 
     public float smoothing = 10;
     public float rotateScale = 0.05f;
@@ -148,14 +149,16 @@ public class CursorSelect : MonoBehaviour
             Debug.Log(targetOnPlaneVector);
             //objectHit.position = Vector3.Lerp(objectHit.position, targetOnPlane+objectHit.position, smoothing * Time.deltaTime);
             StatusUIManager.AppStatus = objectHit.name + " Moving";
-            _inPlaneRB.MovePosition(targetOnPlaneVector+objectHit.position);
-            //_inPlaneRB.velocity = targetOnPlaneVector;
+            //_inPlaneRB.MovePosition(targetOnPlaneVector+objectHit.position);
+            // Using velocity has less jittering than MovePosition
+            _inPlaneRB.velocity = (targetOnPlaneVector)*speed;
         }
         
     }
 
     public void DeMoveObject()
     {
+        // FreezeAll causes sinking between objects of similar mass. Engine issue
         _inPlaneRB.constraints = RigidbodyConstraints.FreezeAll;
         _moveObjectFlag = false;
         _moveObjectInPlaneFlag = false;
