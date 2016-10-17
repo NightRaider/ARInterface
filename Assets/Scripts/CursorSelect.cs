@@ -13,8 +13,10 @@ public class CursorSelect : MonoBehaviour
 
 
     private static bool _moveObjectFlag = false;
+    private static bool _moveObjectInPlaneFlag = false;
     private RaycastHit _hit;
     private Vector3 _hitRelativePosition;
+    private Rigidbody _inPlaneRB;
     // Use this for initialization
     void Start()
     {
@@ -44,14 +46,24 @@ public class CursorSelect : MonoBehaviour
         if (Physics.Linecast(userCamera.transform.position, transform.position, out _hit))
         {
             objectHit = _hit.transform;
-            _hitRelativePosition = _hit.point - objectHit.position;
-            _moveObjectFlag = true;
+            if (objectHit.tag == "Moveable")
+            {
+                _hitRelativePosition = _hit.point - objectHit.position;
+                _moveObjectFlag = true;
+            }
+            else if (objectHit.tag == "MoveInPlane")
+            {
+                _inPlaneRB = objectHit.GetComponent<Rigidbody>();
+                _hitRelativePosition = _hit.point - objectHit.position;
+                _moveObjectInPlaneFlag = true;
+            }
+            
         }
     }
 
     public void SelectObject()
     {
-        if (objectHit != null)
+        if (objectHit != null&&objectHit.tag=="Moveable")
         {
             float xRotate = degreeToFloat(joint.transform.eulerAngles.x);
 
@@ -100,11 +112,36 @@ public class CursorSelect : MonoBehaviour
             objectHit.position = Vector3.Lerp(objectHit.position, targetposition, smoothing*Time.deltaTime);
             StatusUIManager.AppStatus = objectHit.name + " Moving";
         }
+
+        else if (_moveObjectInPlaneFlag == true)
+        {
+            float zMove = 0;
+            float scale = _hit.point.z / transform.position.z;
+            Vector3 targetposition = new Vector3(transform.position.x * scale
+                - _hitRelativePosition.x, transform.position.y * scale
+                - _hitRelativePosition.y, objectHit.position.z
+                - zScale * zMove);
+            Vector3 relativeMoveInViewFrustum = targetposition - objectHit.position;
+            float angle = Vector3.Angle(relativeMoveInViewFrustum, objectHit.up);
+            // Calculate angle between movme vector in camera view plane and normal of design space plane. 
+            // Use this angle to project to calculate difference vector between original movement
+            // and its projection on design plane.
+            Vector3 targetOnPlaneDirection=relativeMoveInViewFrustum-(relativeMoveInViewFrustum.magnitude* 
+                Mathf.Cos(angle* Mathf.PI / 180))*objectHit.up;
+            float targetOnPlaneMagnitude = relativeMoveInViewFrustum.magnitude / Mathf.Sin(angle* Mathf.PI / 180);
+            Vector3 targetOnPlaneVector = targetOnPlaneDirection.normalized * targetOnPlaneMagnitude;
+            Debug.Log(Mathf.Sin(angle*Mathf.PI/180));
+            //objectHit.position = Vector3.Lerp(objectHit.position, targetOnPlane+objectHit.position, smoothing * Time.deltaTime);
+            StatusUIManager.AppStatus = objectHit.name + " Moving";
+            _inPlaneRB.MovePosition(targetOnPlaneVector+objectHit.position);
+        }
+        
     }
 
     public void DeMoveObject()
     {
         _moveObjectFlag = false;
+        _moveObjectInPlaneFlag = false;
         objectHit = null;
         StatusUIManager.AppStatus ="Cursor Moving";
     }

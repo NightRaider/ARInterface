@@ -46,12 +46,16 @@ public class CursorStateHandler : MonoBehaviour
     // Time limit for click and drag
     private float clickTimerLimit = .5f;
     private float _timer = 0f;
+    ThalmicMyo thalmicMyo;
+
+    void Start()
+    {
+        thalmicMyo = myo.GetComponent<ThalmicMyo>();
+    }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
-        ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo>();
         if (thalmicMyo.pose != _lastPose)
         {
             if (thalmicMyo.pose == Pose.Fist)
@@ -118,8 +122,6 @@ public class CursorStateHandler : MonoBehaviour
                         Debug.Log(OnMakeFistDrag);
                     }
                 }
-
-
             }
             else if (thalmicMyo.pose == Pose.FingersSpread)
             {
@@ -142,9 +144,7 @@ public class CursorStateHandler : MonoBehaviour
             }
             else if (thalmicMyo.pose == Pose.DoubleTap)
             {
-                //    GetComponent<Renderer>().material = doubleTapMaterial;
 
-                //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
             else
             {
@@ -165,6 +165,8 @@ public class CursorStateHandler : MonoBehaviour
             }
         }
     }
+
+
     private bool isClick()
     {
         return _timer < clickTimerLimit;

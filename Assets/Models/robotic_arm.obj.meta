@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: c6fb31d5a0efa804a8e243abc31b6b57
+timeCreated: 1476673593
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: robotic_arm_Baza_chwytaka
+    100004: robotic_arm_cable_Walec
+    100006: robotic_arm_cable_Walec_1
+    100008: robotic_arm_cable_Walec_2
+    100010: robotic_arm_Podstawa_nieruchoma
+    100012: robotic_arm_Podstawa_nieruchoma_MeshPart0
+    100014: robotic_arm_Podstawa_nieruchoma_MeshPart1
+    100016: robotic_arm_Podstawa_ruchoma
+    100018: robotic_arm_Podstawa_ruchoma_MeshPart0
+    100020: robotic_arm_Podstawa_ruchoma_MeshPart1
+    100022: robotic_arm_Podstawa_ruchoma_MeshPart2
+    100024: robotic_arm_Podstawa_ruchoma_MeshPart3
+    100026: robotic_arm_Rami__chwytaka_L
+    100028: robotic_arm_Rami__chwytaka_R
+    100030: robotic_arm_Ramiona_dolne_Rami__DL1
+    100032: robotic_arm_Ramiona_dolne_Rami__DR1
+    100034: robotic_arm_Ramiona_G_rne_Rami__DL
+    100036: robotic_arm_Ramiona_G_rne_Rami__DR
+    100038: robotic_arm_Silnik1
+    100040: robotic_arm_Silnik1_1
+    100042: robotic_arm_Silnik2
+    100044: robotic_arm_Silnik2_1
+    100046: robotic_arm_Silnik3
+    100048: robotic_arm_Sze_cian
+    100050: robotic_arm_Sze_cian1
+    100052: robotic_arm_Sze_cian_1
+    100054: robotic_arm_Wa__ramion_DG
+    100056: robotic_arm_Wa__ramion_G
+    400000: //RootNode
+    400002: robotic_arm_Baza_chwytaka
+    400004: robotic_arm_cable_Walec
+    400006: robotic_arm_cable_Walec_1
+    400008: robotic_arm_cable_Walec_2
+    400010: robotic_arm_Podstawa_nieruchoma
+    400012: robotic_arm_Podstawa_nieruchoma_MeshPart0
+    400014: robotic_arm_Podstawa_nieruchoma_MeshPart1
+    400016: robotic_arm_Podstawa_ruchoma
+    400018: robotic_arm_Podstawa_ruchoma_MeshPart0
+    400020: robotic_arm_Podstawa_ruchoma_MeshPart1
+    400022: robotic_arm_Podstawa_ruchoma_MeshPart2
+    400024: robotic_arm_Podstawa_ruchoma_MeshPart3
+    400026: robotic_arm_Rami__chwytaka_L
+    400028: robotic_arm_Rami__chwytaka_R
+    400030: robotic_arm_Ramiona_dolne_Rami__DL1
+    400032: robotic_arm_Ramiona_dolne_Rami__DR1
+    400034: robotic_arm_Ramiona_G_rne_Rami__DL
+    400036: robotic_arm_Ramiona_G_rne_Rami__DR
+    400038: robotic_arm_Silnik1
+    400040: robotic_arm_Silnik1_1
+    400042: robotic_arm_Silnik2
+    400044: robotic_arm_Silnik2_1
+    400046: robotic_arm_Silnik3
+    400048: robotic_arm_Sze_cian
+    400050: robotic_arm_Sze_cian1
+    400052: robotic_arm_Sze_cian_1
+    400054: robotic_arm_Wa__ramion_DG
+    400056: robotic_arm_Wa__ramion_G
+    2300000: robotic_arm_Baza_chwytaka
+    2300002: robotic_arm_cable_Walec
+    2300004: robotic_arm_cable_Walec_1
+    2300006: robotic_arm_cable_Walec_2
+    2300008: robotic_arm_Podstawa_nieruchoma_MeshPart0
+    2300010: robotic_arm_Podstawa_nieruchoma_MeshPart1
+    2300012: robotic_arm_Podstawa_ruchoma_MeshPart0
+    2300014: robotic_arm_Podstawa_ruchoma_MeshPart1
+    2300016: robotic_arm_Podstawa_ruchoma_MeshPart2
+    2300018: robotic_arm_Podstawa_ruchoma_MeshPart3
+    2300020: robotic_arm_Rami__chwytaka_L
+    2300022: robotic_arm_Rami__chwytaka_R
+    2300024: robotic_arm_Ramiona_dolne_Rami__DL1
+    2300026: robotic_arm_Ramiona_dolne_Rami__DR1
+    2300028: robotic_arm_Ramiona_G_rne_Rami__DL
+    2300030: robotic_arm_Ramiona_G_rne_Rami__DR
+    2300032: robotic_arm_Silnik1
+    2300034: robotic_arm_Silnik1_1
+    2300036: robotic_arm_Silnik2
+    2300038: robotic_arm_Silnik2_1
+    2300040: robotic_arm_Silnik3
+    2300042: robotic_arm_Sze_cian
+    2300044: robotic_arm_Sze_cian1
+    2300046: robotic_arm_Sze_cian_1
+    2300048: robotic_arm_Wa__ramion_DG
+    2300050: robotic_arm_Wa__ramion_G
+    3300000: robotic_arm_Baza_chwytaka
+    3300002: robotic_arm_cable_Walec
+    3300004: robotic_arm_cable_Walec_1
+    3300006: robotic_arm_cable_Walec_2
+    3300008: robotic_arm_Podstawa_nieruchoma_MeshPart0
+    3300010: robotic_arm_Podstawa_nieruchoma_MeshPart1
+    3300012: robotic_arm_Podstawa_ruchoma_MeshPart0
+    3300014: robotic_arm_Podstawa_ruchoma_MeshPart1
+    3300016: robotic_arm_Podstawa_ruchoma_MeshPart2
+    3300018: robotic_arm_Podstawa_ruchoma_MeshPart3
+    3300020: robotic_arm_Rami__chwytaka_L
+    3300022: robotic_arm_Rami__chwytaka_R
+    3300024: robotic_arm_Ramiona_dolne_Rami__DL1
+    3300026: robotic_arm_Ramiona_dolne_Rami__DR1
+    3300028: robotic_arm_Ramiona_G_rne_Rami__DL
+    3300030: robotic_arm_Ramiona_G_rne_Rami__DR
+    3300032: robotic_arm_Silnik1
+    3300034: robotic_arm_Silnik1_1
+    3300036: robotic_arm_Silnik2
+    3300038: robotic_arm_Silnik2_1
+    3300040: robotic_arm_Silnik3
+    3300042: robotic_arm_Sze_cian
+    3300044: robotic_arm_Sze_cian1
+    3300046: robotic_arm_Sze_cian_1
+    3300048: robotic_arm_Wa__ramion_DG
+    3300050: robotic_arm_Wa__ramion_G
+    4300000: robotic_arm_Baza_chwytaka
+    4300002: robotic_arm_cable_Walec
+    4300004: robotic_arm_cable_Walec_1
+    4300006: robotic_arm_cable_Walec_2
+    4300008: robotic_arm_Podstawa_nieruchoma_MeshPart0
+    4300010: robotic_arm_Podstawa_nieruchoma_MeshPart1
+    4300012: robotic_arm_Podstawa_ruchoma_MeshPart0
+    4300014: robotic_arm_Podstawa_ruchoma_MeshPart1
+    4300016: robotic_arm_Podstawa_ruchoma_MeshPart2
+    4300018: robotic_arm_Podstawa_ruchoma_MeshPart3
+    4300020: robotic_arm_Rami__chwytaka_L
+    4300022: robotic_arm_Rami__chwytaka_R
+    4300024: robotic_arm_Ramiona_dolne_Rami__DL1
+    4300026: robotic_arm_Ramiona_dolne_Rami__DR1
+    4300028: robotic_arm_Ramiona_G_rne_Rami__DL
+    4300030: robotic_arm_Ramiona_G_rne_Rami__DR
+    4300032: robotic_arm_Silnik1
+    4300034: robotic_arm_Silnik1_1
+    4300036: robotic_arm_Silnik2
+    4300038: robotic_arm_Silnik2_1
+    4300040: robotic_arm_Silnik3
+    4300042: robotic_arm_Sze_cian
+    4300044: robotic_arm_Sze_cian1
+    4300046: robotic_arm_Sze_cian_1
+    4300048: robotic_arm_Wa__ramion_DG
+    4300050: robotic_arm_Wa__ramion_G
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0002
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
