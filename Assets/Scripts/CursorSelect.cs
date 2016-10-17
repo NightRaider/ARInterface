@@ -108,7 +108,7 @@ public class CursorSelect : MonoBehaviour
                 - _hitRelativePosition.x, transform.position.y * scale 
                 - _hitRelativePosition.y, objectHit.position.z
                 - zScale*zMove);
-            Debug.Log(zMove);
+            Debug.Log("Move");
             objectHit.position = Vector3.Lerp(objectHit.position, targetposition, smoothing*Time.deltaTime);
             StatusUIManager.AppStatus = objectHit.name + " Moving";
         }
@@ -130,10 +130,11 @@ public class CursorSelect : MonoBehaviour
                 Mathf.Cos(angle* Mathf.PI / 180))*objectHit.up;
             float targetOnPlaneMagnitude = relativeMoveInViewFrustum.magnitude / Mathf.Sin(angle* Mathf.PI / 180);
             Vector3 targetOnPlaneVector = targetOnPlaneDirection.normalized * targetOnPlaneMagnitude;
-            Debug.Log(Mathf.Sin(angle*Mathf.PI/180));
+            Debug.Log(targetOnPlaneVector);
             //objectHit.position = Vector3.Lerp(objectHit.position, targetOnPlane+objectHit.position, smoothing * Time.deltaTime);
             StatusUIManager.AppStatus = objectHit.name + " Moving";
             _inPlaneRB.MovePosition(targetOnPlaneVector+objectHit.position);
+            //_inPlaneRB.velocity = targetOnPlaneVector;
         }
         
     }
