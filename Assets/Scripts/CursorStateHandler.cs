@@ -48,9 +48,19 @@ public class CursorStateHandler : MonoBehaviour
     private float _timer = 0f;
     ThalmicMyo thalmicMyo;
 
+
+
     void Start()
     {
         thalmicMyo = myo.GetComponent<ThalmicMyo>();
+        // Set MoveInPlane objects constraints
+        GameObject[] designSpaceObjects = GameObject.FindGameObjectsWithTag("MoveInPlane");
+        foreach (GameObject obj in designSpaceObjects)
+        {
+            Debug.Log(obj);
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
     // Update is called once per frame

@@ -130,8 +130,6 @@
     <Compile Include="Assets\Vuforia\Scripts\WordBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
-    <None Include="Assets\Kitten\Shaders\Normal-Diffuse.shader" />
     <None Include="Assets\Myo\README-MyoUnity.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\StreamingAssets\QCAR\Markers.xml" />

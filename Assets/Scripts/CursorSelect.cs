@@ -80,6 +80,20 @@ public class CursorSelect : MonoBehaviour
                 rotateScale * (zRotate==0?0:zRotate-5),Space.World);
             StatusUIManager.AppStatus = objectHit.name+" Selected";
         }
+        else if (objectHit!=null&&objectHit.tag == "MoveInPlane")
+        {
+            float xRotate = 0;
+
+            float yRotate = degreeToFloat(joint.transform.eulerAngles.y);
+
+            float zRotate = 0;
+
+            objectHit.Rotate(rotateScale * (xRotate == 0 ? 0 : xRotate - 15),
+                rotateScale * (yRotate == 0 ? 0 : yRotate - 15),
+                rotateScale * (zRotate == 0 ? 0 : zRotate - 5), Space.Self);
+            StatusUIManager.AppStatus = objectHit.name + " Selected";
+        }
+
     }
 
     public void DeSelectObject()
@@ -115,6 +129,7 @@ public class CursorSelect : MonoBehaviour
 
         else if (_moveObjectInPlaneFlag == true)
         {
+            _inPlaneRB.constraints = RigidbodyConstraints.FreezeRotation;
             float zMove = 0;
             float scale = _hit.point.z / transform.position.z;
             Vector3 targetposition = new Vector3(transform.position.x * scale
@@ -141,6 +156,7 @@ public class CursorSelect : MonoBehaviour
 
     public void DeMoveObject()
     {
+        _inPlaneRB.constraints = RigidbodyConstraints.FreezeAll;
         _moveObjectFlag = false;
         _moveObjectInPlaneFlag = false;
         objectHit = null;
