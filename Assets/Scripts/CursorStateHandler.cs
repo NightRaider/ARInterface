@@ -43,6 +43,7 @@ public class CursorStateHandler : MonoBehaviour
     public static event DragAction OnMakeFistDrag;
     public static event DragAction OnFingerSpreadDrag;
 
+    
     // Time limit for click and drag
     private float clickTimerLimit = .5f;
     private float _timer = 0f;
@@ -72,7 +73,7 @@ public class CursorStateHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (thalmicMyo.pose != _lastPose)
         {
@@ -84,7 +85,7 @@ public class CursorStateHandler : MonoBehaviour
                 {
                     OnMakeFistDown();
                 }
-
+               
                 cursorMove.CursorMoveActive = false;
 
             }
@@ -116,6 +117,12 @@ public class CursorStateHandler : MonoBehaviour
                     if (isClick())
                         if (OnFingerSpreadClick != null)
                             OnFingerSpreadClick();
+                }
+                else if (_lastPose == Pose.Fist)
+                {
+                    if(!isClick())
+                        if (OnMakeFistUp != null)
+                            OnMakeFistUp();
                 }
                 cursorMove.CursorMoveActive = false;
 
@@ -174,11 +181,7 @@ public class CursorStateHandler : MonoBehaviour
                         OnMakeFistClick();
 
                 }
-                else
-                {
-                    if (OnMakeFistUp != null)
-                        OnMakeFistUp();
-                }
+                
 
             }
         }

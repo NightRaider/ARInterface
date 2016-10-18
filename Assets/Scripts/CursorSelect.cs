@@ -124,7 +124,6 @@ public class CursorSelect : MonoBehaviour
                 - _hitRelativePosition.x, transform.position.y * scale 
                 - _hitRelativePosition.y, objectHit.position.z
                 - zScale*zMove);
-            Debug.Log("Move");
             objectHit.position = Vector3.Lerp(objectHit.position, targetposition, smoothing*Time.deltaTime);
             StatusUIManager.AppStatus = objectHit.name + " Moving";
         }
@@ -159,12 +158,19 @@ public class CursorSelect : MonoBehaviour
 
     public void DeMoveObject()
     {
+        Debug.Log("DemoveFunction");
+
         // FreezeAll causes sinking between objects of similar mass. Engine issue
+        if (objectHit != null)
+        {
         _inPlaneRB.constraints = RigidbodyConstraints.FreezeAll;
         _moveObjectFlag = false;
         _moveObjectInPlaneFlag = false;
         objectHit = null;
         StatusUIManager.AppStatus ="Cursor Moving";
+        Debug.Log("Demove");
+        }
+
     }
 
     // Change euler angle from 0 - 360 to -180 to 180

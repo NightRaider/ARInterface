@@ -130,6 +130,7 @@
     <Compile Include="Assets\Vuforia\Scripts\WordBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Lo-detail_forklift\readme.txt" />
     <None Include="Assets\Myo\README-MyoUnity.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\StreamingAssets\QCAR\Markers.xml" />
